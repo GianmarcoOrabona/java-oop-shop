@@ -1,5 +1,7 @@
 package org.lessons.java.shop;
 
+import java.util.Random;
+
 public class Product {
     // ATTRIBUTI
     private int code;
@@ -10,8 +12,9 @@ public class Product {
 
     // COSTRUTTORI
 
-    public Product(int code, String name, String description, double price, double vat) {
-        this.code = code;
+    public Product(String name, String description, double price, double vat) {
+        Random randomCode = new Random();
+        this.code = randomCode.nextInt(1, 10001);
         this.name = name;
         this.description = description;
         this.price = price;
@@ -59,5 +62,26 @@ public class Product {
 
 
     // METODI
+
+    public double getStandardPrice() {
+        return price;
+    }
+
+    public double getVatPrice() {
+        double vat = (price/100) * 22;
+        return price + vat;
+    }
+
+    public String getProductInfo() {
+        return "<-----Product----->" + '\n' +
+                getCode() + " - " + getName() + '\n'+
+                " " + '\n' +
+                "<-----Product Info----->" + '\n' +
+                "Name: " + getName() + '\n' +
+                "Description: " + getDescription() + '\n' +
+                "Price without VAT: " + getStandardPrice() + " €" + '\n' +
+                "Price + VAT: " + getVatPrice() + " €" + '\n' +
+                "Product Code: " + getCode() + '\n';
+    }
 
 }
