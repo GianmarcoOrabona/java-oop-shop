@@ -10,6 +10,9 @@ public class Product {
     private double price;
     private double vat;
 
+    // Categoria
+    private Category category;
+
     // COSTRUTTORI
 
     public Product(String name, String description, double price, double vat) {
@@ -22,6 +25,15 @@ public class Product {
 
 
     // GETTER E SETTER
+
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public int getCode() {
         return code;
@@ -90,7 +102,10 @@ public class Product {
                 "Description: " + getDescription() + '\n' +
                 "Price without VAT: " + getPrice() + " €" + '\n' +
                 "Price + VAT: " + getVatPrice() + " €" + '\n' +
-                "Product Code: " + getCode() + '\n';
+                "Product Code: " + getCode() + '\n' +
+                "<-----Category----->" +
+                "Category name: " + category.getName() + '\n' +
+                "Category description" + category.getDescription() + '\n';
     }
 
 }
