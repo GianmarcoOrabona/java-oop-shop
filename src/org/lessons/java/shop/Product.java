@@ -96,6 +96,7 @@ public class Product {
     // Metodo che mi stampa le informazioni dell'oggetto
     public String getProductInfo() {
         return getFullName() +
+
                 " " + '\n' +
                 "<-----Product Info----->" + '\n' +
                 "Name: " + getName() + '\n' +
@@ -103,9 +104,11 @@ public class Product {
                 "Price without VAT: " + getPrice() + " €" + '\n' +
                 "Price + VAT: " + getVatPrice() + " €" + '\n' +
                 "Product Code: " + getCode() + '\n' +
-                "<-----Category----->" +
+
+                " " + '\n' +
+                "<-----Category----->" + '\n' +
                 "Category name: " + category.getName() + '\n' +
-                "Category description" + category.getDescription() + '\n';
+                "Category description: " + category.getDescription();
     }
 
 }
