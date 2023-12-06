@@ -13,8 +13,7 @@ public class Product {
     // COSTRUTTORI
 
     public Product(String name, String description, double price, double vat) {
-        Random randomCode = new Random();
-        this.code = randomCode.nextInt(1, 10001);
+        codeGenerator();
         this.name = name;
         this.description = description;
         this.price = price;
@@ -63,23 +62,33 @@ public class Product {
 
     // METODI
 
-    public double getStandardPrice() {
-        return price;
+
+    // Metodo che mi genera un codice casuale
+    private void codeGenerator () {
+        Random randomCode = new Random();
+        this.code = randomCode.nextInt(1, 10001);
     }
 
+    // Metodo che mi calcola il prezzo con l'iva
     public double getVatPrice() {
-        double vat = (price/100) * 22;
-        return price + vat;
+        double vatPrice = getPrice() + (getPrice() * getVat()/100);
+        return price + vatPrice;
     }
 
-    public String getProductInfo() {
+    // Metodo che mi stampa codice-nome dell'oggetto
+    public String getFullName() {
         return "<-----Product----->" + '\n' +
-                getCode() + " - " + getName() + '\n'+
+                getCode() + " - " + getName() + '\n';
+    }
+
+    // Metodo che mi stampa le informazioni dell'oggetto
+    public String getProductInfo() {
+        return getFullName() +
                 " " + '\n' +
                 "<-----Product Info----->" + '\n' +
                 "Name: " + getName() + '\n' +
                 "Description: " + getDescription() + '\n' +
-                "Price without VAT: " + getStandardPrice() + " €" + '\n' +
+                "Price without VAT: " + getPrice() + " €" + '\n' +
                 "Price + VAT: " + getVatPrice() + " €" + '\n' +
                 "Product Code: " + getCode() + '\n';
     }
