@@ -15,7 +15,16 @@ public class Product {
 
     // COSTRUTTORI
 
-    public Product(String name, String description, double price, double vat) {
+    public Product(String name, String description, double price, double vat) throws Exception{
+        if (price <= 0) {
+            throw new Exception("Invalid price. Price must be over 0!");
+        }
+        if (vat < 0) {
+            throw new Exception("Invalid vat. Vat can't be a negative number!");
+        }
+        if (name.isEmpty() || name.isBlank()) {
+            throw new Exception("Invalid name. ");
+        }
         codeGenerator();
         this.name = name;
         this.description = description;
